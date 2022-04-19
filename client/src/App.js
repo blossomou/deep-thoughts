@@ -1,12 +1,18 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
 
-import Footer from './components/Footer';
 import Header from './components/Header';
+import Footer from './components/Footer';
+
 import Home from './pages/Home';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 
 const client = new ApolloClient({
@@ -16,7 +22,6 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    // eslint-disable-next-line react/jsx-no-undef
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
